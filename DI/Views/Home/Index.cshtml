@@ -1,0 +1,28 @@
+﻿@using DI.Repositories
+@*@using DI.Services*@
+
+@inject ITransientRepository _Transient
+@inject IScopeRepository _Scoped
+@inject ISingletonRepository _Singleton
+
+
+@{
+    ViewData["Title"] = "Dependency Injection in ASP.NET Core";
+    var transient = _Transient.GetNumber();
+    var scoped = _Scoped.GetNumber();
+    var singleton = _Singleton.GetNumber();
+}
+
+<div class="text-center">
+    <h1 class="text-primary">One Request </h1>
+    <h1 class="display-4">Transient : @ViewData["Transient"]</h1>
+    <h1 class="display-4">Scoped : @ViewData["Scope"]</h1>
+    <h1 class="display-4">Singleton : @ViewData["Singleton"]</h1>
+</div>
+<hr />
+<div class="text-center">
+    <h1 class="text-primary">Two Request </h1>
+    <h1 class="display-4">Transient : @transient</h1>
+    <h1 class="display-4">Scoped : @scoped</h1>
+    <h1 class="display-4">Singleton : @singleton</h1>
+</div>
